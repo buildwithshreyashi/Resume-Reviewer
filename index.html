@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Reviewer | Get Instant Resume Feedback</title>
+  <meta name="description" content="Upload your resume and get an instant analysis with a score and practical suggestions to improve it.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <span class="brand">Resume Reviewer</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <h1>Check your resume in seconds</h1>
+      <p>Upload your resume and get a score, a checklist, and clear suggestions to make it stronger. Your file is analyzed in your browser and is not stored or sent to a server.</p>
+    </section>
+
+    <section class="panel" id="upload-panel">
+      <label id="drop-zone" class="drop-zone" for="file-input">
+        <p class="upload-hint">&#11015; Upload your resume here &#11015;</p>
+        <span class="upload-btn">&#128206; Upload Resume</span>
+        <p class="drop-sub">Click this button or drag your file into this box</p>
+        <p class="drop-types">Accepted: PDF, DOCX, or TXT &middot; Max 5 MB</p>
+        <input type="file" id="file-input" accept=".pdf,.docx,.txt" hidden>
+      </label>
+
+      <div class="file-row" id="file-row" hidden>
+        <span id="file-name"></span>
+        <button type="button" id="clear-btn" class="link-btn">Remove</button>
+      </div>
+
+      <label class="job-label" for="job-text">Job or internship description <span>(optional)</span></label>
+      <textarea id="job-text" class="job-text" rows="5" placeholder="Paste the job description here to see how well your resume matches it. Leave empty for a general review."></textarea>
+
+      <button type="button" id="analyze-btn" class="primary-btn" disabled>Analyze Resume</button>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel results" id="results" hidden>
+      <div class="score-row">
+        <div class="score-circle" id="score-circle">
+          <span id="score-value">0</span><small>/100</small>
+        </div>
+        <div>
+          <h2 id="score-label">Your score</h2>
+          <p id="score-summary"></p>
+          <p class="meta-line" id="meta-line"></p>
+        </div>
+      </div>
+
+      <div id="match-box" class="match-box" hidden></div>
+
+      <h3>Checklist</h3>
+      <ul class="checks" id="checks"></ul>
+
+      <h3>Suggestions to improve</h3>
+      <ul class="suggestions" id="suggestions"></ul>
+
+      <button type="button" id="again-btn" class="secondary-btn">Review another resume</button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>Your resume stays on your device.</span>
+    </div>
+  </footer>
+
+  <!-- PDF and DOCX parsers (free, loaded from cdnjs) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
